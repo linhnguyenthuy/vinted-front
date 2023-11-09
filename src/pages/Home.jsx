@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [data, setData] = useState();
@@ -24,11 +25,40 @@ const Home = () => {
   ) : (
     <div>
       {data.offers.map((offers, index) => {
-        console.log(offers.owner.account.avatar.url);
+        // console.log(offers.owner.account.avatar.secure_url);
+        // console.log(offers.owner.account.username);
+
         return (
-          <div key={index}>
-            <img src={offers.owner.account.avatar.url} alt="" />
-          </div>
+          <Link to={`/offers/${offers._id}`} key={index}>
+            <div>
+              {offers.owner &&
+              offers.owner.account &&
+              offers.owner.account.avatar &&
+              offers.owner.account.avatar.secure_url ? (
+                <img
+                  src={offers.owner.account.avatar.secure_url}
+                  alt=""
+                  style={{ height: `50px`, width: `50px` }}
+                />
+              ) : null}
+              <span>{offers.owner.account.username}</span>
+              <div>
+                <img
+                  src={offers.product_image.secure_url}
+                  alt=""
+                  style={{
+                    height: `360px`,
+                    width: `230px`,
+                    backgroundPosition: "center",
+                    backgroundSize: "cover",
+                  }}
+                />
+              </div>
+              <p>{offers.product_price} €</p>
+              <p>{offers.product_details[1].TAILLE}</p>
+              <p>{offers.product_details[0].MARQUE}</p>
+            </div>
+          </Link>
         );
       })}
     </div>

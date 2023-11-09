@@ -7,8 +7,6 @@ import Home from "./pages/Home";
 import Offers from "./pages/Offers";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <Router>
