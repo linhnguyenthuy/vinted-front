@@ -11,22 +11,28 @@ const Offert = () => {
     const fetchData = async () => {
       try {
         const reponse = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers/${id}`
+          `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
         );
-        // console.log(reponse.data);
+        console.log(reponse.data);
         setData(reponse.data);
         setIsLoading(false);
       } catch (error) {
         console.log(error.reponse.data);
       }
-      fetchData();
     };
-  }, []);
+    fetchData();
+  }, [id]);
+
   return isLoading ? (
     <h1>Is Loading...</h1>
   ) : (
     <div>
-      <img src={data.product_image.secure_url} alt="" />
+      {data && data.product_image && (
+        <img src={data.product_image.secure_url} alt="" />
+      )}
+      <div>
+        <h1>{data.product_price} €</h1>
+      </div>
     </div>
   );
 };
