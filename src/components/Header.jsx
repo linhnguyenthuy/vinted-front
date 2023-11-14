@@ -18,7 +18,7 @@ const Header = ({ token, handleToken }) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        margin: "0 5%",
+        margin: "0 3%",
         gap: `3%`,
         marginTop: `20px`,
       }}
@@ -57,15 +57,55 @@ const Header = ({ token, handleToken }) => {
           </button>
         ) : (
           <div>
-            <Link to="/signup" style={{ marginRight: `20px` }}>
-              <button>S'inscrire</button>
+            <Link to="/signup" style={{ marginRight: `10px` }}>
+              <button
+                style={{
+                  height: `30px`,
+                  border: `1px solid #0ab1ba`,
+                  color: `#0ab1ba`,
+                  backgroundColor: `#fff`,
+                  borderRadius: `1.5vh`,
+                }}
+              >
+                S'inscrire
+              </button>
             </Link>
             <Link to="/login">
-              <button>Se connecter</button>
+              <button
+                style={{
+                  height: `30px`,
+                  border: `1px solid #0ab1ba`,
+                  color: `#0ab1ba`,
+                  backgroundColor: `#fff`,
+                  borderRadius: `1.5vh`,
+                }}
+              >
+                Se connecter
+              </button>
             </Link>
           </div>
         )}
       </span>
+      <div>
+        <Link
+          to={token ? "/publish" : "/login"}
+          style={{
+            marginRight: `10px`,
+          }}
+        >
+          <button
+            style={{
+              backgroundColor: `#0ab1ba`,
+              color: `white`,
+              border: `none`,
+              height: `30px`,
+              borderRadius: `1.5vh`,
+            }}
+          >
+            Vends tes articles
+          </button>
+        </Link>
+      </div>
     </header>
   );
 };

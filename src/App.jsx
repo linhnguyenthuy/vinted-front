@@ -8,12 +8,13 @@ import Offers from "./pages/Offers";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Header from "./components/Header";
+import Publish from "./pages/Publish";
 
 function App() {
   const [token, setToken] = useState(Cookies.get("token") || null);
   const handleToken = (token) => {
     if (token) {
-      Cookies.set("token", token, { expires: 15 });
+      Cookies.set("token", token, { expires: 3 });
       setToken(token);
     } else {
       Cookies.remove("token");
@@ -33,6 +34,7 @@ function App() {
             path="/signup"
             element={<Signup handleToken={handleToken} />}
           />
+          <Route path="/publish" element={<Publish token={token} />} />
         </Routes>
       </Router>
     </>

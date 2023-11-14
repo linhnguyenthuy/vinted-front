@@ -13,6 +13,14 @@ const Login = ({ handleToken }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    if (!password) {
+      setErrorMessage("Le champ mot de passe ne peut pas être vide");
+      return;
+    }
+    if (!email) {
+      setErrorMessage("Le champ email ne peut pas être vide");
+      return;
+    }
     try {
       setErrorMessage("");
       const response = await axios.post(
@@ -27,13 +35,7 @@ const Login = ({ handleToken }) => {
       handleToken(response.data.token);
       navigate("/");
     } catch (error) {
-      if (error.response.data.message === "User not found") {
-        setErrorMessage("Il faut remplir l'email");
-      } else if (error.response.data.message === "undefined") {
-        setErrorMessage("Il faut remplir le password");
-      } else {
-        console.log(error.response.data.message);
-      }
+      console.log(error.response.data.message);
     }
   };
 
