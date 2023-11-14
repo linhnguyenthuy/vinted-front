@@ -36,7 +36,12 @@ const Header = ({ token, handleToken }) => {
           placeholder="Recherche les articles"
           value={searchTerm}
           onChange={(event) => setSearchTerm(event.target.value)}
-          style={{ width: `80%`, height: `30px`, marginRight: `10px` }}
+          style={{
+            width: `80%`,
+            height: `30px`,
+            marginRight: `10px`,
+            color: `#b4b4b4`,
+          }}
         />
         <button type="submit">Rechercher</button>
       </form>

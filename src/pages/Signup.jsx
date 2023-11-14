@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import Cookies from "js-cookie";
 
 const Signup = ({ handleToken }) => {
   const [username, setUsename] = useState("");
@@ -129,7 +128,6 @@ const Signup = ({ handleToken }) => {
             type="submit"
             value={"S'incrire"}
             style={{
-              width: "10%",
               marginTop: `20px`,
               marginBottom: `10px`,
             }}
