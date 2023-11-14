@@ -8,10 +8,13 @@ const Login = ({ handleToken }) => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
+      setErrorMessage("");
       const response = await axios.post(
         " https://lereacteur-vinted-api.herokuapp.com/user/login",
         {
@@ -24,7 +27,13 @@ const Login = ({ handleToken }) => {
       handleToken(response.data.token);
       navigate("/");
     } catch (error) {
-      console.log(error);
+      if (error.response.data.message === "User not found") {
+        setErrorMessage("Il faut remplir l'email");
+      } else if (error.response.data.message === "undefined") {
+        setErrorMessage("Il faut remplir le password");
+      } else {
+        console.log(error.response.data.message);
+      }
     }
   };
 
@@ -88,6 +97,18 @@ const Login = ({ handleToken }) => {
             }}
           />
         </form>
+        {errorMessage && (
+          <p
+            style={{
+              color: `red`,
+              marginTop: `10px`,
+              display: `flex`,
+              justifyContent: `center`,
+            }}
+          >
+            {errorMessage}
+          </p>
+        )}
         <Link to="/signup">Pas encore un compte? Inscrit-toi</Link>
       </div>
     </div>
