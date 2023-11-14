@@ -60,8 +60,8 @@ const Offert = () => {
             src={data.product_image.secure_url}
             alt=""
             style={{
-              width: `450px`,
-              height: `600 px`,
+              width: `45vh`,
+              height: `80vh`,
               objectFit: `cover`,
               objectPosition: `center`,
             }}

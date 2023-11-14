@@ -37,7 +37,7 @@ const Home = () => {
           alt=""
           style={{
             width: `100%`,
-            height: `480px`,
+            height: `67vh`,
             objectFit: `cover`,
             objectPosition: `center`,
           }}
