@@ -31,7 +31,7 @@ const Publish = ({ token }) => {
       formData.append("condition", condition);
       formData.append("city", place);
       formData.append("price", price);
-      formData.append("pictures", pictures);
+      formData.append("picture", pictures);
 
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
